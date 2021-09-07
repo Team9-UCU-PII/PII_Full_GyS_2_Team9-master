@@ -31,8 +31,21 @@ namespace Full_GRASP_And_SOLID.Library
             foreach (Step step in this.steps)
             {
                 Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
-                    $"usando '{step.Equipment.Description}' durante {step.Time}");
+                    $"usando '{step.Equipment.Description}' durante {step.Time} segundos");
             }
+            Console.WriteLine($"El precio total de esta receta es: {this.GetProductionCost()}");
+        }
+
+        public double GetProductionCost()
+        {
+            double result = 0;
+
+            foreach (Step step in this.steps)
+            {
+                result += step.StepTotal;
+            }
+
+            return result;
         }
     }
 }
